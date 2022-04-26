@@ -7,4 +7,4 @@ RUN wget -O speedtest.tar.gz https://github.com/librespeed/speedtest-go/releases
     tar zxf speedtest.tar.gz && \
     rm -f speedtest.tar.gz
 
-CMD [ /speedtest-backend ]
+CMD /speedtest-backend
