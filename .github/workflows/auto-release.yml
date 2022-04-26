@@ -1,6 +1,6 @@
 #=================================================
-# https://github.com/zhangsean/docker-cloud189
-# Description: Auto check latest cloud189 and release zhangsean/cloud189 using GitHub Actions
+# https://github.com/zhangsean/docker-speedtest-web
+# Description: Auto check latest speedtest-go and release zhangsean/speedtest-web using GitHub Actions
 # License: Apache V2.0
 # Author: ZhangSean
 #=================================================
@@ -35,7 +35,7 @@ jobs:
           git fetch --tags
           export CURRENT=$(git tag | tail -n 1)
           echo "CURRENT=$CURRENT"
-          export RELEASE_API=https://api.github.com/repos/tickstep/cloudpan189-go/releases
+          export RELEASE_API=https://api.github.com/repos/librespeed/speedtest-go/releases
           export LATEST=`curl -s $RELEASE_API | jq -r .[0].tag_name`
           echo "LATEST=$LATEST"
           if [ "$LATEST" != "$CURRENT" ]; then
@@ -54,11 +54,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Changing version from $CURRENT to $LATEST"
-          sed -i "/CLOUD189_VER/s/$CURRENT/$LATEST/g" Dockerfile
+          sed -i "/SPEEDTEST_GO_VER/s/$CURRENT/$LATEST/g" Dockerfile
           # commit and push
           git config user.email zxf2342@qq.com
           git config user.name zhangsean
-          git commit -a -m "Bump to cloudpan189 $LATEST"
+          git commit -a -m "Bump to speedtest-go $LATEST"
           git push
 
       - name: Create Release
@@ -70,7 +70,7 @@ jobs:
           tag_name: ${{ env.LATEST }}
           release_name: ${{ env.LATEST }}
           body: |
-            Bump to cloudpan189 ${{ env.LATEST }}
+            Bump to speedtest-go ${{ env.LATEST }}
           draft: false
           prerelease: false
 
@@ -96,5 +96,5 @@ jobs:
           context: .
           push: true
           tags: |
-            zhangsean/cloud189:latest,
-            zhangsean/cloud189:${{ env.LATEST }}
+            zhangsean/speedtest-web:latest,
+            zhangsean/speedtest-web:${{ env.LATEST }}

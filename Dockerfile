@@ -1,22 +1,10 @@
 FROM alpine
-LABEL MAINTAINER="ZhangSean <zxf2342@qq.com>"
+LABEL MAINTAINER="zhangsean <zxf2342@qq.com>"
 
-COPY entrypoint.sh /bin/entrypoint.sh
+ENV SPEEDTEST_GO_VER=v1.1.4
 
-ENV CLOUD189_USERNAME= \
-    CLOUD189_PASSWORD= \
-    CLOUD189_CACHE_SIZE=256KB \
-    CLOUD189_PROXY= \
-    CLOUD189_SAVEDIR=/root/Downloads \
-    CLOUD189_VERBOSE=0 \
-    CLOUD189_VER=v0.1.1
+RUN wget -O speedtest.tar.gz https://github.com/librespeed/speedtest-go/releases/download/v${SPEEDTEST_GO_VER}/speedtest-go_${SPEEDTEST_GO_VER}_linux_amd64.tar.gz && \
+    tar zxf speedtest.tar.gz && \
+    rm -f speedtest.tar.gz
 
-RUN wget -O cloudpan189.zip https://github.com/tickstep/cloudpan189-go/releases/download/${CLOUD189_VER}/cloudpan189-go-${CLOUD189_VER}-linux-amd64.zip && \
-    unzip cloudpan189.zip && \
-    mv cloudpan189-go-*-linux-amd64/cloudpan189-go /bin/ && \
-    rm -rf cloudpan189* && \
-    ln -s /bin/cloudpan189-go /bin/cloud189
-
-VOLUME [ "/root/Downloads" ]
-
-ENTRYPOINT [ "/bin/entrypoint.sh" ]
+CMD [ /speedtest-backend ]
