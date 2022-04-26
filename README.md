@@ -7,7 +7,7 @@ Web based network speed test server, powered by [`librespeed/speedtest-go`](http
 ## Usage
 
 ```sh
-docker run -itd \
+docker run -itd --name speedtest-web \
     -p 666:8989 \
     zhangsean/speedtest-web
 ```
