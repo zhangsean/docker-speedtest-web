@@ -3,7 +3,7 @@ LABEL MAINTAINER="zhangsean <zxf2342@qq.com>"
 
 ENV SPEEDTEST_GO_VER=v1.1.4
 
-RUN wget -O speedtest.tar.gz https://github.com/librespeed/speedtest-go/releases/download/v${SPEEDTEST_GO_VER}/speedtest-go_${SPEEDTEST_GO_VER}_linux_amd64.tar.gz && \
+RUN wget -O speedtest.tar.gz https://github.com/librespeed/speedtest-go/releases/download/${SPEEDTEST_GO_VER}/speedtest-go_${SPEEDTEST_GO_VER:1}_linux_amd64.tar.gz && \
     tar zxf speedtest.tar.gz && \
     rm -f speedtest.tar.gz
 
