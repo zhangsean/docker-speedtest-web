@@ -4,7 +4,7 @@ Web based network speed test server, powered by [`librespeed/speedtest-go`](http
 
 [![Github Release](https://img.shields.io/github/v/release/zhangsean/docker-speedtest-web)](https://github.com/zhangsean/docker-speedtest-web)
 
-[![DockerHub Badge](http://dockeri.co/image/zhangsean/speedtest-web)](https://hub.docker.com/r/zhangsean/speedtest-web/)
+[![DockerHub Badge](https://dockeri.co/image/zhangsean/speedtest-web)](https://hub.docker.com/r/zhangsean/speedtest-web/)
 
 ## Usage
 
