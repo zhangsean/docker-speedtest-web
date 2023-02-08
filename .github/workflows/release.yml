@@ -15,7 +15,7 @@ on:
     if: github.event.repository.owner.id == github.event.sender.id
   push:
     paths:
-      - '.github/workflows/*.yml'
+      - .github/workflows/release.yml
 
 env:
   TZ: Asia/Shanghai
