@@ -12,6 +12,7 @@ RUN wget -O speedtest.tar.gz https://github.com/librespeed/speedtest-go/releases
     rm -f speedtest.tar.gz && \
     sed -i '/assets_path/s/""/"."/' settings.toml && \
     wget https://github.com/librespeed/speedtest-go/raw/v1.1.4/web/assets/index.html && \
+    sed -i /googleapis/d index.html && \
     wget https://github.com/librespeed/speedtest-go/raw/${SPEEDTEST_GO_VER}/web/assets/speedtest.js && \
     wget https://github.com/librespeed/speedtest-go/raw/${SPEEDTEST_GO_VER}/web/assets/speedtest_worker.js
 
